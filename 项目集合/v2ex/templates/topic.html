@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ topic.title }}</title>
+    <link rel="stylesheet" href="/static/css/topic.css">
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/comment.js"></script>
+    <script type="text/javascript" src="/static/js/api.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="left title">V2EX</div>
+    <div class="right topic-foot">
+        <span><a href="{{ url_for('v2ex.v2ex') }}" class="link-top">首页</a> </span>
+        <span><a href="{{ url_for('todo.index') }}" class="link-top">TODO</a></span>
+        <span><a href="{{ url_for('v2ex.login') }}" class="link-top">登陆</a></span>
+    </div>
+</div>
+
+<div class="node">
+    <a href="{{url_for('node.show', id=topic.node.id)}}" class="node-src">{{ topic.node.name }}</a>
+</div>
+<div class="topics-box">
+    <div class="topic-title">{{ topic.title }}</div>
+    <div class="topic-content">
+        {{ topic.content}}
+    </div>
+    <footer class="topic-foot">
+        <a href="{{ url_for('.edit', id=topic.id) }}" class="link-bottom">修改</a>
+        <a href="{{ url_for('.delete', id=topic.id) }}" class="link-bottom">删除</a>
+    </footer>
+</div>
+
+<div class="height-20"></div>
+<div class="height-20"></div>
+
+<div class="topic-comment-container">
+    <div class="comment-num">评论个数:{{ topic_comments }}</div>
+
+    <div id="{{ topic.id }}" class="topic-id">
+        {% for c in topic.comments%}
+        <div class="comment-cell cell item">
+            <div>
+                <span>{{ c.comment }}</span>
+                <span class="right span-margin">by:{{ c.user.username }}</span>
+                <span class="right span-margin">At:{{ c.created_time }}</span>
+                    <span class="right span-margin">
+                        <img src="{{ c.user.avatar }}" class="avatar">
+                    </span>
+            </div>
+            <div class="right span-margin">
+            <button class="comment-delete" data-id="{{ c.id }}">删除</button>
+            <!--<a href="#" class="com">评论</a>-->
+            </div>
+            <!--<div class="comment-div hide">-->
+            <!--<input name="comment" class="left m id-input-comment" placeholder="Comment">-->
+            <!--<button class="id-button-comment-add">发表</button>-->
+            <!--</div>-->
+        </div>
+        <div class="line-straight"></div>
+        {% endfor %}
+        <div class="comment-now">
+        <a href="#" class="com">我来评一评</a>
+        </div>
+        <div class="comment-div hide">
+             <input name="comment" class="left m id-input-comment" placeholder="Comment">
+            <button class="id-button-comment-add">发表</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>play</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/css/bootstrap.css">
+    <link rel="stylesheet" href="./static/css/play.css">
+</head>
+<body>
+<div class="player-bg">
+    <div class="player-model">
+        <div class="player-header">
+            <div class="music-bg">
+                <img src="./static/imgs/1.jpg" alt="" data-img="1" width="400px" height="400px">
+            </div>
+            <div class="heart">
+                <i class="icon-heart1"></i>
+<!--                <i class="icon-heart"></i>-->
+            </div>
+        </div>
+<!--        <div class="border-5px"></div>-->
+        <div class="player-controler">
+            <div class="volume control-item">
+                <i class="icon-volume-high"></i>
+                <div class="range hide">
+                    <input type="range" min="0" max="1" step="0.1" value="0.4" class="input-range">
+                </div>
+            </div>
+            <div class="backward control-item">
+                <i class="icon-backward"></i>
+            </div>
+            <div class="play control-item">
+                <i class="icon-play2"></i>
+            </div>
+<!--            <div class="pause control-item">-->
+<!--                <i class="icon-pause"></i>-->
+<!--            </div>-->
+            <div class="forward control-item">
+                <i class="icon-forward2"></i>
+            </div>
+<!--            <div class="shuffle control-item">-->
+<!--                <i class="icon-shuffle"></i>-->
+<!--            </div>-->
+            <div class="loop control-item">
+                <i class="icon-loop"></i>
+            </div>
+        </div>
+<!--        <div class="border-5px"></div>-->
+        <div class="progress progress-striped active music-progress">
+            <div class="progress-bar progress-bar-success music-progress-success" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                 aria-valuemax="100" style="width: 0">
+                <span class="sr-only">40% Complete (success)</span>
+            </div>
+        </div>
+        <div class="player-content">
+            <div class="audio-cur" data-cur="1" data-sum="8">
+                <audio src="./audioStore/Red.mp3"></audio>
+            </div>
+            <ul class="music-list">
+                <div class="music-list-bg">
+                    <img src="./static/imgs/1.jpg" height="160" width="100%">
+                </div>
+                <li class="music-list-item border-1px my-active" data-path="./audioStore/Red.mp3">Red</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/七里香.mp3">七里香</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/星晴.mp3">星晴</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/月光.mp3">月光</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/海阔天空.mp3">海阔天空</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/稻香.mp3">稻香</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/菊花台.mp3">菊花台</li>
+                <li class="music-list-item border-1px" data-path="./audioStore/k歌之王.mp3">k歌之王</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="./static/js/utils.js" type="application/javascript"></script>
+<script src="./static/js/player.js" type="application/javascript"></script>
+<script src="./static/js/main.js" type="application/javascript"></script>
+<script src="./static/js/jquery.js" type="application/javascript"></script>
+<script src="./static/js/bootstrap.js" type="application/javascript"></script>
+</html>

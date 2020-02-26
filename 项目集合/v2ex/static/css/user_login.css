@@ -1,0 +1,84 @@
+html {
+    background-color: #e2e2e2;
+}
+
+form.login-box-form {
+    text-align: center;
+}
+
+.head .title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.head a {
+    color: #778087;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.head > .right > span {
+    color: #556;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 6px 1px 0 10px;
+    display: inline-block;
+}
+
+.head {
+    height: 38px;
+    padding: 6px 20px 0px 20px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.background {
+    background-color: #e2e2e2;
+}
+
+form.pure-form {
+    text-align: center;
+    height: 200px;
+}
+
+.login-box {
+    height: 50%;
+    width: 380px;
+    background-color: #72fad2;
+    margin: 0 auto;
+}
+
+.username-submit, .password-submit {
+    height: 30px;
+    width: 40%;
+    min-width: 30%;
+    max-width: 60%;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    word-break: break-word;
+    font-size: 0.8em;
+    border-radius: 5px;
+    border-color: #6f6f79;
+    border-width: thin;
+}
+
+.login-button-submit {
+    width: 30%;
+    height: 30px;
+    background: white;
+    /*border: none;*/
+    border: double;
+    margin: 15px;
+    border-radius: 5px;
+}
+
+form.login-box-form, form.register-box-form {
+    text-align: center;
+}

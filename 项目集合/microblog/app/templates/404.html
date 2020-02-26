@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block app_content %}
+
+
+<h1 class="page-header text-center">{{ _('404 NOT FOUND') }}</h1>
+<p class="text-right">
+    <a href="{{ url_for('index') }}">{{ _('Back') }}</a>
+</p>
+
+
+{% endblock %}

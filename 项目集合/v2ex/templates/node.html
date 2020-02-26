@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ node }}</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/profile.css">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/comment.js"></script>
+    <script type="text/javascript" src="/static/js/api.js"></script>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('.submit-topic-option').on('click', function () {
+                $(this).parent().next().slideToggle();
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="head">
+    <div class="left title">V2EX</div>
+    <div class="right">
+        <span><a href="{{ url_for('v2ex.v2ex') }}">首页</a> </span>
+        <span><a href="{{ url_for('todo.index') }}">TODO</a></span>
+        <span><a href="{{ url_for('v2ex.login') }}">登陆</a></span>
+    </div>
+</div>
+<div class="line-straight"></div>
+<span>
+<p class="node-title"> {{ node.name }}专栏({{ topics_num }})</p>
+</span>
+
+<div class="height-20"></div>
+
+<div class="topic-box">
+    <div class="node-box-option">
+        <button class="submit-topic-option" name="发表新文章">发表新文章</button>
+    </div>
+
+    <div class="hide node-box">
+        <div class="new-topic-box">
+            <form action="{{ url_for('topic.add') }}" method="POST">
+
+                <input type="hidden" name="node_id" value="{{ node.id }}">
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+
+                <div class="new-topic-title">
+                    <input type="text" name="title" placeholder="输入 title" class="input-topic-title">
+                </div>
+                <div class="new-topic-content">
+                    <textarea name="content" placeholder="输入 content" class="input-topic-content"></textarea>
+                </div>
+
+                <button class="submit-topic pure-button pure-button-active">Post Topic</button>
+            </form>
+        </div>
+    </div>
+    <div class="line-straight"></div>
+
+    {% for t in node.topics %}
+    <div class="topic-title">
+        <a href="{{ url_for('topic.show', id=t.id) }}" class="link-topic-title">
+            {{ t.title }}
+        </a>
+    </div>
+        <div class="topic-comment">
+            <div class="comment-cell cell item">
+                <img src="{{ t.user.avatar }}" class="avatar">
+                <span class="right span-margin">{{ t.created_time }}</span>
+                <span class="right span-margin">{{ t.user.username}}</span>
+            </div>
+        </div>
+    <div class="line-straight"></div>
+    {% endfor %}
+</div>
+</body>
+</html>

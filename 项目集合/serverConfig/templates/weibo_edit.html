@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>编辑微博</title>
+    <style>
+        button{
+            background: yellow;
+            border-radius: 10px;
+            padding: 2px 2px 2px 2px;
+        }
+        .pure_form{
+            background: green;
+            font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+            text-align: center;
+            text-emphasis-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <form class="pure_form" action="/weibo/update" method="post">
+        <input type="text" name="id" value="{{weibo_id}}">
+        <input type="text" name="content" value="{{weibo_content}}">
+        <button class="pure_form" type="submit">编辑微博</button>
+    </form>
+</body>
+</html>

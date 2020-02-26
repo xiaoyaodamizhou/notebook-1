@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://yui.yahoopapis.com/pure/0.6.0/pure-min.css">
+    <title>所有 TODO</title>
+    <!--<script src="jquery.js"></script>-->
+    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+    <style>
+        .status-active{
+            color: gray;
+        }
+        .status-done{
+            color: blue;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <input id="id-input-content" type="text" name="content">
+    <button id="id-button-add" class="pure-button pure-button-primary"
+            type="submit">创建新TODO</button>
+    <br>{{todos}}<br>
+    <script>
+        $(document).ready(function(){
+           var log = function(){
+            console.log(arguments);
+        };
+        var insertTodo = function(todo){
+            var id = todo.id;
+            var content = todo.content;
+            var time = todo.created_time;
+            var template = `
+                <p class='status-active>
+                            ${id} ${content} @ ${time}
+                    <a href='/todo/complete?id=${id}'>完成</a>
+                </p>
+                `;
+//            模板函数更加明了的写出HTML
+            log('模板字符串', template)
+            $('body').append(template)
+        };
+        var sendAddRequest = function (content) {
+            log('sendRequest', content);
+            var todo = {
+                content: content
+            };
+            var request = {
+                url: '/api/todo/add',
+                type: 'post',
+                data: todo,
+                success: function(r){
+                    log('成功', r);
+                    var todo = JSON.parse(r);
+                    log('todo, ', todo);
+                    insertTodo(todo)
+                },
+                error: function(err){
+                    log('失败', err)
+                }
+            };
+//            ajax,可以用字典的形式发送请求，而不需要一个网址
+            jQuery.ajax(request)
+        };
+        $('#id-button-add').on('click', function(){
+            var content = $('#id-input-content').val();
+            sendAddRequest(content)
+        })
+        });
+    </script>
+</body>
+</html>

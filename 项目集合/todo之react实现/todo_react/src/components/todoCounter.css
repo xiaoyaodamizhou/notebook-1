@@ -1,0 +1,74 @@
+.todo-counter {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.todo-counter-sum {
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    margin-bottom: -18px;
+    color: #8e8080;
+    font-weight: bold;
+}
+
+.todo-table {
+    width: 610px;
+    display: table;
+    margin: 2px 0 30px;
+    transform: translateY(50%);
+}
+
+.todo-row {
+    display: table-row;
+}
+
+.todo-row:not(:first-child) {
+    margin-top: -1px;
+}
+
+.cell {
+    display: table-cell;
+    width: 100px;
+    text-align: center;
+    border: 1px solid #b39e9e1f;
+}
+
+button {
+    height: 30px;
+    margin: 0 10px;
+    padding: 2px;
+    border: 1px solid #a58d8d;
+    background-color: #9ee0d730;
+    border-radius: 6px;
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input {
+    padding: 2px;
+    border: 1px solid #eee;
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid #61dafb;
+}
+
+a {
+    color: #333;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1a7af8;
+}
+
+

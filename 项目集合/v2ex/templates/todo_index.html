@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <style>
+        form {
+            display: inline-block;
+        }
+
+        .todo_bar {
+            height: 28px;
+            background: rgba(113, 125, 136, 0.82);
+            outline-width: 2px;
+            outline-color: aliceblue;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 18px;
+            padding: 5px 10px;
+            color: #292212;
+        }
+
+        .todo_add {
+            margin: 0 auto;
+            text-align: center;
+            height: 30px;
+        }
+
+        a {
+            color: aqua;
+            text-decoration: none;
+        }
+
+        a:link {
+            color: aqua;
+        }
+
+        a:visited {
+            color: red;
+        }
+
+        a:hover {
+            color: brown;
+        }
+
+        a:active {
+            color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="left title">V2EX</div>
+    <div class="right">
+        <span><a href="{{ url_for('v2ex.v2ex') }}">首页</a> </span>
+        <span><a href="{{ url_for('todo.index') }}">TODO</a></span>
+        <span><a href="{{ url_for('v2ex.login') }}">登陆</a></span>
+        <span><a href="{{ url_for('v2ex.register') }}">注册</a></span>
+    </div>
+</div>
+<div class="todo_add">
+    <form action="{{ url_for('todo.add') }}" method="post">
+        <input type="text" name="task" placeholder="输入 todo" class="pure-input-1">
+        <button class='pure-button pure-button-primary pure-button-active button_todo_add'>Add</button>
+    </form>
+</div>
+
+{% for todo in todo_list %}
+<div class="todo_bar">
+    <span class="todo_update"><a href="{{ url_for('todo.edit', id=todo.id) }}">修改</a></span>
+    <span class="todo_delete"><a href="{{ url_for('todo.delete', id=todo.id) }}">删除</a></span>
+    {{ todo.task }}
+</div>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+.player-bg {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background-color: #e2e2e2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.player-model {
+    width: 400px;
+    height: 600px;
+}
+
+.player-header {
+    position: relative;
+
+}
+
+.player-header .heart {
+    position: absolute;
+    right: 30px;
+    top: 45px;
+}
+
+.heart{
+    height: 40px;
+    line-height: 40px;
+    font-size: 40px;
+}
+
+
+.border-5px {
+    position: relative;
+}
+
+.border-5px:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 5px solid #e0c2c2;;
+}
+
+.border-1px {
+    position: relative;
+}
+
+.border-1px:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid gray;
+}
+
+.player-controler {
+    position: relative;
+    top: -20px;
+    background-color: #a08888;
+    display: flex;
+    height: 40px;
+    font-size: 0;
+    margin-bottom: 5px;
+}
+
+.player-controler .control-item {
+    display: inline-block;
+    flex: 1;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.player-content {
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+    height: 161px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+}
+
+.audio-cur {
+    display: none;
+}
+
+.music-list {
+    padding: 0;
+    margin-top: 0;
+    height: 160px;
+    overflow: auto;
+    opacity: 0.5;
+}
+
+.music-list-item {
+    margin: 0;
+    height: 20px;
+    line-height: 20px;
+    width: 100%;
+    list-style-type: none;
+    font-family: AppleMyungjo, serif;
+    font-size: 16px;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.music-list-item:nth-child(odd) {
+    background-color: white;
+    opacity: 0.5;
+
+}
+
+.music-list-item:nth-child(even) {
+    background-color: rgb(232, 232, 232);
+    opacity: 0.5;
+}
+
+.music-list-bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.my-active {
+    opacity: 1 !important;
+    background-color: #cfff0d !important;
+    transition: all 0.5s;
+}
+
+.range {
+    position: absolute;
+    transform: rotate(270deg);
+    top: -50px;
+    width: 80px;
+}
+
+.input-range {
+    opacity: 0.5;
+    filter: brightness(0.6);
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.music-progress {
+    position: relative;
+    width: 100%;
+    top: -26px;
+    height: 20px;
+    border-radius: 1px;
+}

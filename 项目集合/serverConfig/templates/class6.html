@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HTTP 操作</title>
+    <script src="E:/码源/web代码/jQuery/jquery.js"></script>
+</head>
+<body>
+    <input id="id-input-username">
+    <input id="id-input-password">
+    <button id="id-button-submit" type="button"> 提交 </button>
+    <button type="button">第二个按钮</button>
+    <script>
+        var log = function(){
+            console.log(arguments)
+        }
+
+        var sendLoginRequest = function(username, password){
+            log("sendLoginRequest", username, password)
+        }
+
+        $("#id-button-submit").on("click", function(){
+            var username = $("#id-input-username")
+            var password = $("#id-input-password")
+            sendLoginRequest(username, password)
+        })
+    </script>
+</body>
+</html>

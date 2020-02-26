@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>个人话题栏</title>
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/user_login.css">
+    <script>
+        <!-- 将要对话题按照时间进行排序-->
+    </script>
+    <style>
+        .personal_topic {
+            height: 35px;
+            background-color: rgba(205, 222, 215, 0.55);
+            margin: 5px 0;
+            padding: 3px 0;
+            border-radius: 5px;
+        }
+
+        .id-topic {
+            font-size: medium;
+            text-decoration: none;
+            margin: 10px;
+            padding: 0.5em 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="head">
+    <div class="left title">V2EX</div>
+    <div class="right">
+        <span><a href="{{ url_for('v2ex.v2ex') }}">首页</a> </span>
+    </div>
+</div>
+
+<center><h2>个人文章分享主页</h2></center>
+{% for t in topics %}
+<ul>
+    <li class="personal_topic"><a href="{{ url_for('topic.show', id=t.id) }}" class="id-topic">{{ t.title }}</a></li>
+</ul>
+{% endfor %}
+</body>
+</html>

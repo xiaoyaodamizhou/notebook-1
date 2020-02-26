@@ -1,0 +1,35 @@
+body {
+    background-color: #2c343c;
+}
+
+header {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: gray;
+}
+
+@media all and (max-width: 800px) and (min-width: 400px) {
+    .chart-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media all {
+    .chart-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+.chart {
+    width: 800px;
+    height: 400px;
+    margin: 20px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>所有微博</title>
+</head>
+<style>
+    .gua-hide{
+    }
+</style>
+<script src="jquery.js"></script>
+<body>
+    {{weibos}}
+    <script>
+        $('.gua-show-comment').on('click', function () {
+//            在routes.py中的html里调用了下面这个命令，其中data-id这个的用法如下,以后可以使用这种
+//            <button class="gua-show-comment" data-id="{id}">评论</button>
+//            这种键值对的形式来匹配从而获取其值
+            var weiboId = $(this).data('id')
+            var selector = '#id-div-comment-' + weiboId
+            var div = $(selector)
+//          为其添加一个class属性，的方法是,toggleClass
+            div.toggleClass('gua-hide')
+            var opacity = 0
+            var height = '0'
+            if (div.hasClass('gua-hide')) {
+                opacity = 0
+                height = '0'
+            } else {
+                opacity = 1
+                height = '42px'
+            }
+//            animate是动画效果，效果是：渐入渐出，速度是fast
+            div.animate({
+                'height': height,
+                'opacity': opacity,
+            }, "fast");
+        });
+    </script>
+</body>
+</html>

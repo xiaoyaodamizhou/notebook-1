@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>game 1</title>
+    <style media="screen">
+        canvas {
+            border: 1px black solid;
+        }
+    </style>
+    <!-- gua game 相关文件 -->
+    <script src='guagame/utils.js'></script>
+    <script src='guagame/gua_game.js'></script>
+    <script src='guagame/gua_scene.js'></script>
+    <script src="guagame/gua_image.js"></script>
+    <script src="guagame/gua_label.js"></script>
+    <script src="guagame/gua_animation.js"></script>
+    <script src="guagame/pipe.js"></script>
+    <!-- 场景文件 -->
+    <script src='scene/main/scene.js'></script>
+    <!-- 结束和标题场景 -->
+    <script src='scene/end/scene_end.js'></script>
+    <script src='scene/title/scene_title.js'></script>
+    <!-- 配置文件-->
+    <script src="config.js"></script>
+</head>
+<body>
+<h5 style="font:1px solid red">方向键:a,d 跳跃键:j, 暂停:p, 鼠标可以拖拽小鸟</h5>
+<canvas id="id-canvas" width="400" height="600"></canvas>
+<br>
+<div class="controls">
+    <!--<div class="">-->
+    <!--<label for="">-->
+    <!--<input type="range" class="gua-auto-slider" value=""-->
+    <!--data-value="config.player_speed" min="0" max="20">-->
+    <!--玩家速度: <span class="gua-label"></span>-->
+    <!--</label>-->
+    <!--</div>-->
+</div>
+
+<audio id="audio-menu" src="audioStore/fly.mp3"></audio>
+<div class="play-list">
+    <div class="play-list-item" data-path="audioStore/fly.mp3" data-target="jump"></div>
+    <div class="play-list-item" data-path="audioStore/die.mp3" data-target="die"></div>
+    <div class="play-list-item" data-path="audioStore/pass.mp3" data-target="pass"></div>
+    <div class="play-list-item" data-path="audioStore/collide.mp3" data-target="collide"></div>
+</div>
+
+<script src=main.js></script>
+<script>
+    var es = function(sel){
+        return document.querySelectorAll(sel)
+    }
+
+    var bindAll = function(sel, eventName, callback){
+        var l = es(sel)
+        for(var i = 0; i < l.length; i++){
+            var input = l[i]
+            input.addEventListener(eventName, function(event){
+                callback(event)
+            })
+        }
+    }
+
+    var template = function(key, item){
+        var s = `
+                        <div class="">
+                            <label for="">
+                            <input type="range" class="gua-auto-slider" value=${item.value}
+                                data-value=${key} min=${item.min} max=${item.max}>
+                                ${item._comments}: <span class="gua-label">${item.value}</span>
+                            </label>
+                        </div>
+                        `
+
+        return s
+    }
+
+    var insertControls = function(){
+        var div = e('.controls')
+        var keys = Object.keys(config)
+        for(var k of keys){
+            var item = config[k]
+            var html = template(k, item)
+            div.insertAdjacentHTML('beforeend', html)
+        }
+    }
+
+    var bindEvents = function(){
+        bindAll('.gua-auto-slider', 'input', function(event){
+            var target = event.target
+            var bindVar = target.dataset.value
+            var v = target.value
+            config[bindVar].value = v
+//                eval(config[bindVar] + '.value=' + v)
+            var label = target.closest('label').querySelector('.gua-label')
+            label.innerText = v
+        })
+    }
+
+    var audio = document.querySelector('#audio-menu')
+
+    var play = function(a){
+        a.addEventListener('canplay', () => {
+            a.play()
+        })
+    }
+
+    var playNow = function(value){
+        var src = playListItem[value]
+        audio.addEventListener('ended', () => {
+            log('ended')
+        })
+        audio.src = src
+        play(audio)
+    }
+
+    var playList = function(){
+        var listItem = es('.play-list-item')
+        var listSrc = {}
+        for(var e of listItem){
+            src = e.dataset.path
+            key = e.dataset.target
+            listSrc[key] = src
+        }
+        return listSrc
+    }
+
+    var playListItem = playList()
+
+    var __main = function(){
+        insertControls()
+        bindEvents()
+    }
+
+    __main()
+
+</script>
+</body>
+</html>

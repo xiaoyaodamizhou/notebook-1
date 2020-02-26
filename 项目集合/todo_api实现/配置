@@ -1,0 +1,4 @@
+python db init
+python migrate -m "initial migration"
+python db upgrade
+python main.py server

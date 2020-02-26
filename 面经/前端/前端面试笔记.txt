@@ -1,0 +1,100 @@
+CSS部分：
+1. 描述下盒模型。和老版本的IE盒模型有什么区别？
+2. CSS选择器有哪些？哪些可以继承？
+(同级，>, +, 伪类，伪元素，属性)
+3. CSS优先级算法如何计算？
+(!import > 内联style > id > class > 元素)
+(同级，后者覆盖前者)
+4. CSS3有哪些新特性？
+边框（border-radius, border-shadow）, 文本（border-shadow)
+2d,3d变化，过渡，动画。css界面（box-sizing:border-box, outline)
+5. 如何水平居中div？写一个范例。
+
+JS部分：
+1. 介绍js的基本数据类型
+2. 如何将浮点数左边的数每三位加一个逗号？如12000000.11转成12，000，000.11
+3. 如何实现数组排序？手写一个方式。
+4. JavaScript原型，原型链？有什么特点？
+5. .call() .apply() .bind()区别？
+Apply数组参数，call一系列参数
+6. 谈谈ECMAScript6
+
+HTML部分：
+1. 行内元素，块级元素，空（void）元素分别有哪些？
+2. 常见的浏览器内核
+3. html5新特性是什么？移除了哪些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分HTML和HTML5？
+语义化标签(nav, header, aside, section, article, footer)
+媒体：(Audio, video)
+存储：(LocalStorage, sessionStorage)
+Canvas
+响应式
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+媒体查询 @media all 
+4. 请描述下Cookie，localStorage和sessionStorage区别。
+5. iframe有哪些缺点？
+HTML5不再支持使用frame，iframe只有src 属性
+优点:
+1.程序调入静态页面比较方便;
+2.页面和程序分离;
+缺点：
+1.iframe有不好之处：样式/脚本需要额外链入，会增加请求。
+2.调用外部页面,需要额外调用css,给页面带来额外的请求次数
+3..Iframes 阻塞页面加载
+
+React部分：
+1. Vue或react使用场景是什么？
+   答：跨平台场景  （说实话没懂这道题要问什么）
+
+2. 描述一下React或vue的生命周期，分别写出加载过程，更新过程，卸载过程的调用方法
+React: 真是dom插入，真实DOM渲染，真实DOM删除
+componentWillMount()
+componentMount()
+componentWillUpdate()
+componentUpdate()
+ComponentWillUnmount()
+
+shouldComponentUpdate(nextProps, nextState)
+
+Vue: 
+创建，渲染，更新，删除
+beforeCreate
+Created
+beforeMount
+Mounted(beforeUpdate update)
+beforeDestroy
+Destroyed
+
+created:在模板渲染成html前调用，即通常初始化某些属性值，然后再渲染成视图。
+mounted:在模板渲染成html后调用，通常是初始化页面完成后，再对html的dom节点进行一些需要的操作。
+
+3. React定义组件的方式有哪几种？ 有什么区别？
+   答：import React, { Component } from 'react'
+      class App extends Component
+
+4. 什么是HoC（Higher-Order Component）？适用于什么场景？
+   答：没答上来。。。
+
+5. React父子组件如何通信，子组件如何修改父组件的state？
+   答：父组件可以向子组件通过传 props
+      子组件传父组件也是通过父组件传递作用域为自身的函数，子组件调用这个函数
+      通过子组件往父组件传值的方式改变state
+
+6. 描述一个完整的Redux的数据流
+// http://www.alloyteam.com/2015/09/react-redux/
+Redux 主要分为三个部分 Action、Reducer、及 Store
+action: 传递操作state的信息，一般使用函数的方式，生成一个state描述。{'done' : true, 'todo': todo}
+Reducer: 一般为简单的处理函数，通过传入旧的 state 和指示操作的 action 来更新 state(根据action更新state)
+Store: 在 Redux 项目中，Store 是单一的。维护着一个全局的 State，并且根据 Action 来进行事件分发处理 State。可以看出 Store 是一个把 Action 和 Reducer 结合起来的对象。
+
+Action => state更新（handleChange, setState, render） => 组件更新
+
+Vuex:
+State（render） => vue component(dispatch) => actions (commit) => mutation (mutate) => state => ....
+核心概念：
+1， state, 初始化一个Vuex.Store保存所有的组建的公共数据。
+2， getters, 所有组建的computed属性。也就是store的计算属性。getters 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+3， Mutations， store中的methods，有两个参数 第一个参数是state, 第二参数是payload自定义参数
+4，Actions， 类似于mutations,可以异步操作，mutations不可以
+5，Modules Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割
+
+

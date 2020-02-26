@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>register</title>
+    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/user_login.css">
+</head>
+<body>
+<div class="head">
+    <div class="left title">V2EX</div>
+    <div class="right">
+        <span><a href="{{ url_for('v2ex.v2ex') }}">首页</a> </span>
+    </div>
+</div>
+
+<div class="background">
+    <div class="pure-checkbox login-box">
+        <form action="{{ url_for('user.register') }}" method="post" class="register-box-form">
+            <input type="text" name="username" placeholder="请输入用户名" class="username-submit">
+            <br>
+            <input type="text" name="password" placeholder="请输入密码" class="password-submit">
+            <br>
+            <button class="login-button-submit">注册</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

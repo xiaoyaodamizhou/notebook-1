@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>箭头函数的 this</title>
+    </head>
+    <body>
+        <script>
+            // 这里只说箭头函数的 this 指向问题, 其他比如 arguments 这种问题不提
+            //
+            // 箭头函数不绑定 this 值
+            // 既然箭头函数不绑定 this 值, 那么如何确定 this 的指向呢
+            // 实际上是往上找一层, 即由上一层的 this 决定
+            var log = console.log.bind(console)
+
+            // case 1
+            var obj = {
+                username: 'gua',
+                say: () => {
+                    log(`this.username (${this.username}) in case 1`)
+                }
+            }
+
+            var case1 = () => {
+                // 1
+                // 箭头函数是在一个对象中定义的
+                // 如果这个对象是在 window 上定义的(对应 node 就是 global),
+                // this 就会绑定到 window 上
+                obj.say()   // undefined
+            }
+
+
+            // case 2
+            var f1 = function() {
+                var obj = {
+                    username: 'gua',
+                    say: () => {
+                        log(`this.username (${this.username}) in case 2`)
+                    }
+                }
+                obj.say()
+            }
+
+            var case2 = () => {
+                // 2
+                // 箭头函数依然是在对象中定义的
+                // 此时的对象是在函数 A 中定义的
+                // 箭头函数的 this 和这个函数 A 的 this 指向相同
+
+                // f1 的 this 指向 window
+                f1()        // undefined
+                var o = {
+                    username: 'xiao',
+                }
+                // f1 的 this 指向 o
+                f1.call(o)  // xiao
+            }
+
+            // case 3
+            var obj_case3 = {
+                username: 'gua',
+                f1() {
+                    const f2 = () => {
+                        log(`this.username (${this.username}) in case 3`)
+                    }
+                    return f2
+                }
+            }
+
+            var case3 = () => {
+                // 3
+                // 箭头函数在函数 f1 中定义, 并且箭头函数不绑定 this
+                // 所以箭头函数的 this 和 f1 的 this 指向相同
+
+                // f1 的 this 指向 obj_case3 这个对象
+                var a = obj_case3.f1()
+                a()         // gua
+
+                var o = {
+                    username: 'xiao',
+                }
+                // f1 的 this 指向 o 这个对象
+                var a = obj_case3.f1.call(o)
+                a()         // xiao
+            }
+
+            // case4
+            var f4 = function() {
+                setTimeout(() => {
+                    log(`this.height (${this.height}) in case 4`)
+                }, 100)
+            }
+
+            var case4 = () => {
+                // 4
+                // 箭头函数在函数 f4 中定义, 所以 this 指向和 f4 中 this 指向相同
+                window.height = 179
+                var o = {
+                    height: 169
+                }
+                f4.call(o)      // 169
+                f4()            // 179
+            }
+
+            var __main = () => {
+                case1()
+                case2()
+                case3()
+                case4()
+            }
+
+            __main()
+        </script>
+    </body>
+</html>
